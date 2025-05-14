@@ -108,6 +108,15 @@ app.get('/api/charging-queue', async (req, res) => {
   }
 });
 
+app.get('/api/charging-user', async (req, res) => {
+  try {
+    const chargingSpot = await ParkingSpot.findOne({ status: '充電中' });
+    res.json(chargingSpot);
+  } catch (error) {
+    res.status(500).json({ message: '獲取充電隊列失敗', error: error.message });
+  }
+});
+
 app.get('/api/parking-spot/:id', async (req, res) => {
   try {
     const spotId = parseInt(req.params.id);
