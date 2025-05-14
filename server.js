@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 // ======= CORS 設定 =======
 app.use(cors({
   origin: [
-    'https://你前端網址.vercel.app', // 換成你Vercel前端網址
+    'https://carparktest4frontend.vercel.app', // 換成你Vercel前端網址
     'http://localhost:3000' // 測試用
   ],
   credentials: true
