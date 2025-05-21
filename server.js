@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 // ======= CORS 設定 =======
 app.use(cors({
@@ -15,14 +15,12 @@ app.use(cors({
 app.use(express.json());
 
 // ======= 連接 MongoDB Atlas =======
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log('MongoDB 連接成功');
-}).catch(err => {
-  console.error('MongoDB 連接失敗:', err);
-});
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('MongoDB 連接成功');
+  }).catch(err => {
+    console.error('MongoDB 連接失敗:', err);
+  });
 
 // 定義充電器移動時間（秒）
 const CABLE_MOVING_TIME = 30; // 30秒
